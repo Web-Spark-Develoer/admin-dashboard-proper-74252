@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Excel Logistics - Light & Readable Design System */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 22 100% 50%; /* Orange #FF6B00 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 262 52% 47%; /* Purple #6B46C1 for links */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 22 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Admin Dashboard - Dark Theme */
+    --sidebar-background: 215 54% 6%;
+    --sidebar-foreground: 216 24% 95%;
+    --sidebar-primary: 48 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 48 100% 50% / 0.08;
+    --sidebar-accent-foreground: 48 100% 50%;
+    --sidebar-border: 0 0% 100% / 0.03;
+    --sidebar-ring: 48 100% 50%;
+
+    /* Status colors */
+    --status-delivered: 142 71% 45%;
+    --status-in-transit: 217 91% 60%;
+    --status-pending: 48 100% 50%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(262 52% 47% / 0.3) 0%, hsl(22 100% 50% / 0.3) 100%);
+    --gradient-orange: linear-gradient(135deg, hsl(22 100% 50%) 0%, hsl(16 100% 45%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .app-grid {
+    @apply grid-cols-1;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    @apply grid-cols-1;
+  }
+  
+  table {
+    @apply text-sm;
+  }
+  
+  th, td {
+    @apply px-2 py-2;
+  }
+}
