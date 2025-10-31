@@ -4,19 +4,64 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 
 const ShipGuest = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [estimatedCost, setEstimatedCost] = useState(10);
+  const [weight, setWeight] = useState("");
+  const navigate = useNavigate();
+
+  const calculateCost = (weightValue: string) => {
+    const w = parseFloat(weightValue) || 0;
+    const cost = 10 + (w * 2); // $10 base + $2 per kg
+    setEstimatedCost(cost);
+  };
+
+  const handleWeightChange = (value: string) => {
+    setWeight(value);
+    calculateCost(value);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // TODO: Connect to backend when ready
-    setTimeout(() => {
-      toast.success("Shipping label created! Check your email for details.");
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      const shipmentData = {
+        sender_name: formData.get('sender-name') as string,
+        sender_email: formData.get('sender-email') as string,
+        sender_phone: formData.get('sender-phone') as string,
+        sender_address: `${formData.get('sender-address')}, ${formData.get('sender-city')}, ${formData.get('sender-zip')}`,
+        receiver_name: formData.get('receiver-name') as string,
+        receiver_phone: formData.get('receiver-phone') as string,
+        receiver_address: `${formData.get('receiver-address')}, ${formData.get('receiver-city')}, ${formData.get('receiver-zip')}`,
+        package_weight: parseFloat(formData.get('weight') as string),
+        package_dimensions: `${formData.get('length')}x${formData.get('width')}x${formData.get('height')} in`,
+        is_guest: true
+      };
+
+      const { data, error } = await supabase.functions.invoke('create-shipment', {
+        body: shipmentData
+      });
+
+      if (error) throw error;
+
+      toast.success(`Shipping label created! Tracking code: ${data.tracking_code}`);
+      
+      // Redirect to tracking page with the new tracking code
+      setTimeout(() => {
+        navigate(`/track-parcel?id=${data.tracking_code}`);
+      }, 2000);
+    } catch (error) {
+      console.error('Error creating shipment:', error);
+      toast.error('Failed to create shipment. Please try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -98,8 +143,16 @@ const ShipGuest = () => {
                 <h3 className="text-lg font-semibold border-b pb-2">Package Information</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="weight">Weight (lbs) *</Label>
-                    <Input id="weight" type="number" step="0.1" required />
+                    <Label htmlFor="weight">Weight (kg) *</Label>
+                    <Input 
+                      id="weight" 
+                      name="weight"
+                      type="number" 
+                      step="0.1" 
+                      value={weight}
+                      onChange={(e) => handleWeightChange(e.target.value)}
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="length">Length (in) *</Label>
@@ -121,23 +174,27 @@ const ShipGuest = () => {
               </div>
 
               {/* Estimated Cost */}
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-secondary p-4 rounded-lg border">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold">Estimated Shipping Cost:</span>
-                  <span className="text-2xl font-bold text-green-600">$45.00</span>
+                  <span className="font-semibold text-foreground">Estimated Shipping Cost:</span>
+                  <span className="text-2xl font-bold text-primary">${estimatedCost.toFixed(2)}</span>
                 </div>
-                <p className="text-sm text-gray-600 mt-2">
-                  Final cost will be calculated based on actual package dimensions and destination
+                <p className="text-sm text-muted-foreground mt-2">
+                  Calculated as: $10 base + $2 per kg. Final cost shown after submission.
                 </p>
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-[#FF6B00] hover:bg-[#E55F00] h-12 text-lg"
+                className="w-full bg-primary hover:bg-primary/90 h-12 text-lg"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Processing..." : "Create Shipping Label"}
               </Button>
+              
+              <p className="text-xs text-muted-foreground text-center">
+                By submitting, you agree to our Terms of Service and Privacy Policy
+              </p>
             </form>
           </CardContent>
         </Card>

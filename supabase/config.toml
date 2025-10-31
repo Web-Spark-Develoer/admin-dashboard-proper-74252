@@ -1,1 +1,10 @@
 project_id = "bjfiowuectwtvnyfrsgz"
+
+[functions.chat]
+verify_jwt = false
+
+[functions.generate-tracking-code]
+verify_jwt = false
+
+[functions.create-shipment]
+verify_jwt = false
