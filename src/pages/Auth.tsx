@@ -22,7 +22,7 @@ const Auth = () => {
       (event, session) => {
         setSession(session);
         if (session?.user) {
-          navigate("/admin-dashboard-x7k9p2m4");
+          navigate("/admin/dashboard");
         }
       }
     );
@@ -31,7 +31,7 @@ const Auth = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session?.user) {
-        navigate("/");
+        navigate("/admin/dashboard");
       }
     });
 
@@ -83,26 +83,23 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--gradient-bg)" }}>
-      <div className="w-full max-w-md p-8 rounded-xl border" style={{ 
-        background: "hsl(var(--card))",
-        borderColor: "hsl(var(--border))"
-      }}>
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0e1a]">
+      <div className="w-full max-w-md p-8 rounded-xl border bg-[#1a1f37] border-[#2a3351]">
         <div className="flex items-center gap-3 mb-8 justify-center">
-          <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-xl">ES</span>
+          <div className="w-12 h-12 rounded-lg bg-[#FF6B00] flex items-center justify-center">
+            <span className="text-white font-bold text-xl">EL</span>
           </div>
-          <h1 className="text-2xl font-bold">Excel Secure</h1>
+          <h1 className="text-2xl font-bold text-white">Excel Logistics</h1>
         </div>
 
-        <h2 className="text-xl font-semibold mb-6 text-center">
-          {isSignUp ? "Create Account" : "Welcome Back"}
+        <h2 className="text-xl font-semibold mb-6 text-center text-white">
+          {isSignUp ? "Create Admin Account" : "Admin Login"}
         </h2>
 
         <form onSubmit={isSignUp ? handleSignUp : handleSignIn} className="space-y-4">
           {isSignUp && (
             <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
+              <Label htmlFor="fullName" className="text-gray-300">Full Name</Label>
               <Input
                 id="fullName"
                 type="text"
@@ -110,26 +107,26 @@ const Auth = () => {
                 onChange={(e) => setFullName(e.target.value)}
                 required={isSignUp}
                 placeholder="Enter your full name"
-                className="bg-secondary/20 border-border"
+                className="bg-[#2a3351] border-[#3a4361] text-white"
               />
             </div>
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-gray-300">Email</Label>
             <Input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="admin@excelsecure.com"
-              className="bg-secondary/20 border-border"
+              placeholder="admin@excellogistics.com"
+              className="bg-[#2a3351] border-[#3a4361] text-white"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-gray-300">Password</Label>
             <Input
               id="password"
               type="password"
@@ -137,13 +134,13 @@ const Auth = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder="••••••••"
-              className="bg-secondary/20 border-border"
+              className="bg-[#2a3351] border-[#3a4361] text-white"
             />
           </div>
 
           <Button
             type="submit"
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+            className="w-full bg-[#FF6B00] hover:bg-[#E55F00] text-white"
             disabled={isLoading}
           >
             {isLoading ? "Loading..." : isSignUp ? "Sign Up" : "Sign In"}
@@ -153,7 +150,7 @@ const Auth = () => {
         <div className="mt-6 text-center">
           <button
             onClick={() => setIsSignUp(!isSignUp)}
-            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="text-sm text-gray-400 hover:text-[#FF6B00] transition-colors"
           >
             {isSignUp
               ? "Already have an account? Sign in"

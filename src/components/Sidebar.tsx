@@ -16,26 +16,23 @@ const Sidebar = ({ onClose }: SidebarProps) => {
     try {
       await supabase.auth.signOut();
       toast.success("Logged out successfully");
-      navigate("/admin-auth-x7k9p2m4");
+      navigate("/admin");
     } catch (error) {
       toast.error("Failed to log out");
     }
   };
 
   const navItems = [
-    { path: "/admin-dashboard-x7k9p2m4", label: "Dashboard", emoji: "🏠" },
-    { path: "/admin-parcels-x7k9p2m4", label: "Parcels", emoji: "📦" },
-    { path: "/admin-users-x7k9p2m4", label: "Users", emoji: "👥" },
-    { path: "/admin-reports-x7k9p2m4", label: "Reports", emoji: "📊" },
-    { path: "/admin-tracking-x7k9p2m4", label: "Tracking", emoji: "🔍" },
-    { path: "/admin-settings-x7k9p2m4", label: "Settings", emoji: "⚙️" },
+    { path: "/admin/dashboard", label: "Dashboard", emoji: "🏠" },
+    { path: "/admin/parcels", label: "Parcels", emoji: "📦" },
+    { path: "/admin/users", label: "Users", emoji: "👥" },
+    { path: "/admin/reports", label: "Reports", emoji: "📊" },
+    { path: "/admin/tracking", label: "Tracking", emoji: "🔍" },
+    { path: "/admin/settings", label: "Settings", emoji: "⚙️" },
   ];
 
   return (
-    <aside className="w-64 h-screen border-r flex flex-col overflow-y-auto" style={{
-      background: "var(--gradient-card)",
-      borderColor: "hsl(var(--sidebar-border))"
-    }}>
+    <aside className="w-64 h-screen bg-[#1a1f37] border-r border-[#2a3351] flex flex-col overflow-y-auto">
       <div className="p-5">
         {/* Close button for mobile */}
         {onClose && (
@@ -49,12 +46,12 @@ const Sidebar = ({ onClose }: SidebarProps) => {
         
         {/* Brand */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-11 h-11 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">ES</span>
+          <div className="w-11 h-11 rounded-lg bg-[#FF6B00] flex items-center justify-center">
+            <span className="text-white font-bold text-lg">EL</span>
           </div>
           <div>
-            <h1 className="font-bold text-base">Excel Secure</h1>
-            <p className="text-xs text-muted-foreground">Admin Panel</p>
+            <h1 className="font-bold text-base text-white">Excel Logistics</h1>
+            <p className="text-xs text-gray-400">Admin Panel</p>
           </div>
         </div>
 
@@ -70,8 +67,8 @@ const Sidebar = ({ onClose }: SidebarProps) => {
                 onClick={onClose}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                   isActive
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                    : "text-sidebar-foreground/90 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-300 hover:bg-[#2a3351]"
                 }`}
               >
                 <span className="text-lg">{item.emoji}</span>
@@ -84,7 +81,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
         {/* Logout */}
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sidebar-foreground/90 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all mt-4 w-full"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-[#2a3351] transition-all mt-4 w-full"
         >
           <LogOut size={18} />
           <span className="text-sm font-medium">Logout</span>

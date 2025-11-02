@@ -22,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
       (event, session) => {
         setSession(session);
         if (!session) {
-          navigate("/auth");
+          navigate("/admin");
         }
         setLoading(false);
       }
@@ -32,7 +32,7 @@ const Layout = ({ children }: LayoutProps) => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (!session) {
-        navigate("/auth");
+        navigate("/admin");
       }
       setLoading(false);
     });
@@ -42,12 +42,12 @@ const Layout = ({ children }: LayoutProps) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--gradient-bg)" }}>
+      <div className="min-h-screen flex items-center justify-center bg-[#0a0e1a]">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mx-auto mb-4">
-            <span className="text-primary-foreground font-bold">ES</span>
+          <div className="w-12 h-12 rounded-lg bg-[#FF6B00] flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold">EL</span>
           </div>
-          <p className="text-muted-foreground">Loading...</p>
+          <p className="text-gray-400">Loading...</p>
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ const Layout = ({ children }: LayoutProps) => {
   }
 
   return (
-    <div className="flex min-h-screen" style={{ background: "var(--gradient-bg)" }}>
+    <div className="flex min-h-screen bg-[#0a0e1a]">
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div 

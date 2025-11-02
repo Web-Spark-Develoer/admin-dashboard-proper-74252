@@ -1,4 +1,5 @@
 import PublicHeader from "./PublicHeader";
+import Footer from "./Footer";
 import { MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
@@ -12,6 +13,7 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen flex flex-col">
       <PublicHeader />
       <main className="flex-1">{children}</main>
+      <Footer />
 
       {/* Chat Widget */}
       {chatOpen && (

@@ -43,14 +43,14 @@ const App = () => (
           <Route path="/customer-auth" element={<PublicLayout><CustomerAuth /></PublicLayout>} />
           <Route path="/ship-guest" element={<PublicLayout><ShipGuest /></PublicLayout>} />
 
-          {/* Admin Dashboard (Hidden - Link Only Access) */}
-          <Route path="/admin-auth-x7k9p2m4" element={<Auth />} />
-          <Route path="/admin-dashboard-x7k9p2m4" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/admin-parcels-x7k9p2m4" element={<Layout><Parcels /></Layout>} />
-          <Route path="/admin-users-x7k9p2m4" element={<Layout><Users /></Layout>} />
-          <Route path="/admin-reports-x7k9p2m4" element={<Layout><Reports /></Layout>} />
-          <Route path="/admin-tracking-x7k9p2m4" element={<Layout><Tracking /></Layout>} />
-          <Route path="/admin-settings-x7k9p2m4" element={<Layout><Settings /></Layout>} />
+          {/* Admin Dashboard (Direct Access) */}
+          <Route path="/admin" element={<Auth />} />
+          <Route path="/admin/dashboard" element={<Layout><Dashboard /></Layout>} />
+          <Route path="/admin/parcels" element={<Layout><Parcels /></Layout>} />
+          <Route path="/admin/users" element={<Layout><Users /></Layout>} />
+          <Route path="/admin/reports" element={<Layout><Reports /></Layout>} />
+          <Route path="/admin/tracking" element={<Layout><Tracking /></Layout>} />
+          <Route path="/admin/settings" element={<Layout><Settings /></Layout>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -21,34 +21,32 @@ const Topbar = ({ onMenuClick }: TopbarProps) => {
   }, []);
 
   return (
-    <div className="border-b px-4 lg:px-6 py-4 flex items-center justify-between gap-4" style={{
-      borderColor: "hsl(var(--border))"
-    }}>
+    <div className="border-b border-[#2a3351] bg-[#1a1f37] px-4 lg:px-6 py-4 flex items-center justify-between gap-4">
       {/* Mobile Menu Button */}
       <button
         onClick={onMenuClick}
-        className="lg:hidden p-2 hover:bg-white/5 rounded-lg"
+        className="lg:hidden p-2 hover:bg-[#2a3351] rounded-lg text-gray-300"
       >
         <Menu size={20} />
       </button>
 
       {/* Search */}
-      <div className="flex items-center gap-2 bg-secondary/20 px-3 py-2 rounded-lg max-w-md flex-1">
-        <Search size={16} className="text-muted-foreground" />
+      <div className="flex items-center gap-2 bg-[#2a3351] px-3 py-2 rounded-lg max-w-md flex-1">
+        <Search size={16} className="text-gray-400" />
         <Input
           placeholder="Search parcels or user..."
-          className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-auto"
+          className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-auto text-white placeholder:text-gray-500"
         />
       </div>
 
       {/* Right side */}
       <div className="flex items-center gap-2 lg:gap-4">
-        <button className="p-2 hover:bg-secondary/20 rounded-lg transition-colors">
+        <button className="p-2 hover:bg-[#2a3351] rounded-lg transition-colors text-gray-300">
           <Bell size={20} />
         </button>
         <div className="text-sm hidden sm:block">
-          <p className="text-muted-foreground text-xs">Signed in as</p>
-          <p className="font-medium truncate max-w-[150px]">{userEmail}</p>
+          <p className="text-gray-400 text-xs">Signed in as</p>
+          <p className="font-medium truncate max-w-[150px] text-white">{userEmail}</p>
         </div>
       </div>
     </div>

@@ -1,4 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import excelDropOff from "@/assets/excel-drop-off.png";
+import partnerLogos from "@/assets/partner-logos.jpg";
 
 const PublicLocations = () => {
   return (
@@ -16,7 +19,7 @@ const PublicLocations = () => {
       {/* Drop Off Image */}
       <section className="py-12">
         <img 
-          src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1200&q=80"
+          src={excelDropOff}
           alt="Excel Logistics drop off"
           className="w-full max-w-4xl mx-auto rounded-lg"
         />
@@ -36,31 +39,12 @@ const PublicLocations = () => {
           </Button>
 
           {/* Partner Logos */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">EXCEL-LOGISTICS</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">DOLLAR GENERAL</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">Walgreens</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">OFFICE DEPOT</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">Walmart</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">PAKMAIL</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">POSTAL ANNEX</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="text-gray-600 font-semibold">POSTNET</span>
-            </div>
+          <div className="mb-16">
+            <img 
+              src={partnerLogos}
+              alt="Excel Logistics partner locations"
+              className="w-full max-w-4xl mx-auto"
+            />
           </div>
 
           {/* Steps */}
@@ -115,7 +99,7 @@ const PublicLocations = () => {
         <h2 className="text-3xl font-bold mb-4">❓</h2>
         <p className="text-xl">
           If you have questions,{" "}
-          <a href="#" className="text-blue-600 underline">please contact customer support</a>
+          <Link to="/support" className="text-blue-600 underline">please contact customer support</Link>
         </p>
       </section>
     </div>
