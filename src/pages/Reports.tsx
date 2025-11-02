@@ -97,12 +97,12 @@ const Reports = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Reports Overview</h1>
-          <p className="text-muted-foreground">Analytics and statistics</p>
+          <h1 className="text-3xl font-bold mb-2 text-white">Reports Overview</h1>
+          <p className="text-gray-400">Analytics and statistics</p>
         </div>
         <Button 
           onClick={exportToCSV}
-          className="bg-primary text-primary-foreground hover:bg-primary/90"
+          className="bg-[#6B7FC1] text-white hover:bg-[#6B7FC1]/90"
         >
           <Download size={16} className="mr-2" />
           Export CSV

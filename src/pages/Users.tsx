@@ -138,20 +138,20 @@ const Users = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Users</h1>
-          <p className="text-muted-foreground">Manage admin users and permissions</p>
+          <h1 className="text-3xl font-bold mb-2 text-white">Users</h1>
+          <p className="text-gray-400">Manage admin users and permissions</p>
         </div>
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button className="bg-[#6B7FC1] text-white hover:bg-[#6B7FC1]/90">
               <Plus size={16} className="mr-2" />
               Add User
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-card border-border">
+          <DialogContent className="bg-[#1a1f37] border-white/10 text-white">
             <DialogHeader>
-              <DialogTitle>Add New Admin User</DialogTitle>
+              <DialogTitle className="text-white">Add New Admin User</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">

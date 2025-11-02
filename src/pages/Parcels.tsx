@@ -156,9 +156,9 @@ const Parcels = () => {
 
   const getStatusBadge = (status: string) => {
     const statusMap: Record<string, { bg: string; text: string }> = {
-      'in_transit': { bg: 'bg-blue-500/20', text: 'text-blue-400' },
-      'delivered': { bg: 'bg-green-500/20', text: 'text-green-400' },
-      'pending': { bg: 'bg-yellow-500/20', text: 'text-yellow-400' },
+      'in_transit': { bg: 'bg-[#3b82f6]/20', text: 'text-[#60a5fa]' },
+      'delivered': { bg: 'bg-[#10b981]/20', text: 'text-[#34d399]' },
+      'pending': { bg: 'bg-[#f59e0b]/20', text: 'text-[#fbbf24]' },
     };
     const config = statusMap[status] || statusMap['pending'];
     return (
@@ -172,84 +172,84 @@ const Parcels = () => {
     <div className="space-y-6 p-4 lg:p-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold mb-2">📦 Parcel Management</h1>
-          <p className="text-muted-foreground text-sm">Manage and track all parcels</p>
+          <h1 className="text-2xl lg:text-3xl font-bold mb-2 text-white">📦 Parcel Management</h1>
+          <p className="text-gray-400 text-sm">Manage and track all parcels</p>
         </div>
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button className="bg-[#6B7FC1] text-white hover:bg-[#6B7FC1]/90">
               <Plus size={16} className="mr-2" />
               Add Parcel
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-card border-border">
+          <DialogContent className="bg-[#1a1f37] border-white/10 text-white">
             <DialogHeader>
-              <DialogTitle>Add New Parcel</DialogTitle>
+              <DialogTitle className="text-white">Add New Parcel</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label>Sender Name</Label>
+                <Label className="text-gray-300">Sender Name</Label>
                 <Input
                   value={formData.sender_name}
                   onChange={(e) => setFormData({...formData, sender_name: e.target.value})}
                   required
-                  className="bg-secondary/20 border-border"
+                  className="bg-[#2d3350] border-white/10 text-white"
                 />
               </div>
               <div className="space-y-2">
-                <Label>Receiver Name</Label>
+                <Label className="text-gray-300">Receiver Name</Label>
                 <Input
                   value={formData.receiver_name}
                   onChange={(e) => setFormData({...formData, receiver_name: e.target.value})}
                   required
-                  className="bg-secondary/20 border-border"
+                  className="bg-[#2d3350] border-white/10 text-white"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Origin</Label>
+                  <Label className="text-gray-300">Origin</Label>
                   <Input
                     value={formData.origin}
                     onChange={(e) => setFormData({...formData, origin: e.target.value})}
                     required
-                    className="bg-secondary/20 border-border"
+                    className="bg-[#2d3350] border-white/10 text-white"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Destination</Label>
+                  <Label className="text-gray-300">Destination</Label>
                   <Input
                     value={formData.destination}
                     onChange={(e) => setFormData({...formData, destination: e.target.value})}
                     required
-                    className="bg-secondary/20 border-border"
+                    className="bg-[#2d3350] border-white/10 text-white"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label>Amount ($)</Label>
+                <Label className="text-gray-300">Amount ($)</Label>
                 <Input
                   type="number"
                   step="0.01"
                   value={formData.amount}
                   onChange={(e) => setFormData({...formData, amount: e.target.value})}
-                  className="bg-secondary/20 border-border"
+                  className="bg-[#2d3350] border-white/10 text-white"
                 />
               </div>
               <div className="space-y-2">
-                <Label>Status</Label>
+                <Label className="text-gray-300">Status</Label>
                 <Select value={formData.status} onValueChange={(value) => setFormData({...formData, status: value})}>
-                  <SelectTrigger className="bg-secondary/20 border-border">
+                  <SelectTrigger className="bg-[#2d3350] border-white/10 text-white">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="pending">Pending</SelectItem>
-                    <SelectItem value="in_transit">In Transit</SelectItem>
-                    <SelectItem value="delivered">Delivered</SelectItem>
+                  <SelectContent className="bg-[#1a1f37] border-white/10">
+                    <SelectItem value="pending" className="text-white hover:bg-[#2d3350]">Pending</SelectItem>
+                    <SelectItem value="in_transit" className="text-white hover:bg-[#2d3350]">In Transit</SelectItem>
+                    <SelectItem value="delivered" className="text-white hover:bg-[#2d3350]">Delivered</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button type="submit" className="w-full bg-[#6B7FC1] text-white hover:bg-[#6B7FC1]/90">
                 Create Parcel
               </Button>
             </form>
@@ -257,50 +257,50 @@ const Parcels = () => {
         </Dialog>
       </div>
 
-      <Card className="bg-card border-border overflow-hidden">
+      <Card className="bg-[#1a1f37] border-white/10 overflow-hidden">
         <CardContent className="p-0">
           {loading ? (
-            <p className="text-center text-muted-foreground py-8">Loading...</p>
+            <p className="text-center text-gray-400 py-8">Loading...</p>
           ) : parcels.length === 0 ? (
-            <p className="text-center text-muted-foreground py-8">No parcels yet. Create your first parcel!</p>
+            <p className="text-center text-gray-400 py-8">No parcels yet. Create your first parcel!</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full min-w-[900px]">
                 <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Tracking ID</th>
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Sender</th>
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Receiver</th>
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Route</th>
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Amount</th>
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Status</th>
-                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-muted-foreground">Actions</th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Tracking ID</th>
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Sender</th>
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Receiver</th>
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Route</th>
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Amount</th>
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Status</th>
+                    <th className="text-left py-3 px-4 text-xs lg:text-sm font-semibold text-gray-400">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {parcels.map((parcel) => (
-                    <tr key={parcel.id} className="border-b border-dashed border-border hover:bg-secondary/5">
-                      <td className="py-3 px-4 font-mono text-xs lg:text-sm font-medium">{parcel.tracking_code}</td>
-                      <td className="py-3 px-4 text-xs lg:text-sm">{parcel.sender_name}</td>
-                      <td className="py-3 px-4 text-xs lg:text-sm">{parcel.receiver_name}</td>
-                      <td className="py-3 px-4 text-xs lg:text-sm">
+                    <tr key={parcel.id} className="border-b border-dashed border-white/10 hover:bg-white/5">
+                      <td className="py-3 px-4 font-mono text-xs lg:text-sm font-medium text-white">{parcel.tracking_code}</td>
+                      <td className="py-3 px-4 text-xs lg:text-sm text-white">{parcel.sender_name}</td>
+                      <td className="py-3 px-4 text-xs lg:text-sm text-white">{parcel.receiver_name}</td>
+                      <td className="py-3 px-4 text-xs lg:text-sm text-white">
                         <span>{parcel.origin}</span>
-                        <span className="mx-1 text-muted-foreground">→</span>
+                        <span className="mx-1 text-gray-400">→</span>
                         <span>{parcel.destination}</span>
                       </td>
-                      <td className="py-3 px-4 text-xs lg:text-sm">${parcel.amount?.toLocaleString()}</td>
+                      <td className="py-3 px-4 text-xs lg:text-sm text-white">${parcel.amount?.toLocaleString()}</td>
                       <td className="py-3 px-4">{getStatusBadge(parcel.status)}</td>
                       <td className="py-3 px-4">
                         <div className="flex flex-col gap-1">
                           <button 
                             onClick={() => handleView(parcel)}
-                            className="bg-transparent border border-white/10 text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors text-xs"
+                            className="bg-transparent border border-white/20 text-white px-2 py-1 rounded-lg hover:bg-white/10 transition-colors text-xs"
                           >
                             View
                           </button>
                           <button 
                             onClick={() => handleEdit(parcel)}
-                            className="bg-transparent border border-white/10 text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors text-xs"
+                            className="bg-transparent border border-white/20 text-white px-2 py-1 rounded-lg hover:bg-white/10 transition-colors text-xs"
                           >
                             Edit
                           </button>
@@ -317,9 +317,9 @@ const Parcels = () => {
 
       {/* View Modal */}
       <Dialog open={viewOpen} onOpenChange={setViewOpen}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-card border-border">
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-[#1a1f37] border-white/10 text-white">
           <DialogHeader>
-            <DialogTitle>Parcel Details</DialogTitle>
+            <DialogTitle className="text-white">Parcel Details</DialogTitle>
           </DialogHeader>
           {selectedParcel && (
             <div className="space-y-4">
@@ -382,9 +382,9 @@ const Parcels = () => {
 
       {/* Edit Modal */}
       <Dialog open={editOpen} onOpenChange={setEditOpen}>
-        <DialogContent className="bg-card border-border">
+        <DialogContent className="bg-[#1a1f37] border-white/10 text-white">
           <DialogHeader>
-            <DialogTitle>Edit Parcel</DialogTitle>
+            <DialogTitle className="text-white">Edit Parcel</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleUpdate} className="space-y-4">
             <div>

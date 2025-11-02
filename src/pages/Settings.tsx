@@ -77,14 +77,14 @@ const Settings = () => {
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Settings</h1>
-        <p className="text-muted-foreground">Manage your account settings</p>
+        <h1 className="text-3xl font-bold mb-2 text-white">Settings</h1>
+        <p className="text-gray-400">Manage your account settings</p>
       </div>
 
       {/* Profile Settings */}
-      <Card className="bg-card border-border">
+      <Card className="bg-[#1a1f37] border-white/10">
         <CardHeader>
-          <CardTitle>Profile Settings</CardTitle>
+          <CardTitle className="text-white">Profile Settings</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleProfileUpdate} className="space-y-4">
@@ -121,9 +121,9 @@ const Settings = () => {
       </Card>
 
       {/* Password Settings */}
-      <Card className="bg-card border-border">
+      <Card className="bg-[#1a1f37] border-white/10">
         <CardHeader>
-          <CardTitle>Password Settings</CardTitle>
+          <CardTitle className="text-white">Password Settings</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handlePasswordUpdate} className="space-y-4">
