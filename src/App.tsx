@@ -22,6 +22,13 @@ import PublicLocations from "./pages/PublicLocations";
 import PublicSupport from "./pages/PublicSupport";
 import CustomerAuth from "./pages/CustomerAuth";
 import ShipGuest from "./pages/ShipGuest";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import Corporate from "./pages/Corporate";
+import Portfolio from "./pages/Portfolio";
+import EnrollNow from "./pages/EnrollNow";
+import ExcelRate from "./pages/ExcelRate";
 import PublicLayout from "./components/PublicLayout";
 import NotFound from "./pages/NotFound";
 
@@ -42,6 +49,13 @@ const App = () => (
           <Route path="/support" element={<PublicLayout><PublicSupport /></PublicLayout>} />
           <Route path="/customer-auth" element={<PublicLayout><CustomerAuth /></PublicLayout>} />
           <Route path="/ship-guest" element={<PublicLayout><ShipGuest /></PublicLayout>} />
+          <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
+          <Route path="/blog" element={<PublicLayout><Blog /></PublicLayout>} />
+          <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
+          <Route path="/corporate" element={<PublicLayout><Corporate /></PublicLayout>} />
+          <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
+          <Route path="/enroll-now" element={<PublicLayout><EnrollNow /></PublicLayout>} />
+          <Route path="/excel-rate" element={<PublicLayout><ExcelRate /></PublicLayout>} />
 
           {/* Admin Dashboard (Direct Access) */}
           <Route path="/admin" element={<Auth />} />

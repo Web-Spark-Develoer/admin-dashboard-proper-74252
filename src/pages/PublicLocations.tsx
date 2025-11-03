@@ -5,7 +5,7 @@ import partnerLogos from "@/assets/partner-logos.jpg";
 
 const PublicLocations = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-accent to-primary py-16 md:py-20 px-4 text-white text-center">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">Fast and easy package drop off</h1>
@@ -17,13 +17,15 @@ const PublicLocations = () => {
       </section>
 
       {/* Drop Off Image */}
-      <section className="py-12">
-        <img 
-          src={excelDropOff}
-          alt="Excel Logistics drop off"
-          className="w-full max-w-4xl mx-auto rounded-lg"
-        />
-        <p className="text-center text-gray-600 mt-6 px-4">You're busy. Drop off quickly on the go.</p>
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <img 
+            src={excelDropOff}
+            alt="Excel Logistics drop off"
+            className="w-full rounded-lg"
+          />
+          <p className="text-center text-gray-600 mt-6">You're busy. Drop off quickly on the go.</p>
+        </div>
       </section>
 
       {/* Where to Drop Off */}
@@ -39,7 +41,7 @@ const PublicLocations = () => {
           </Button>
 
           {/* Partner Logos */}
-          <div className="mb-16">
+          <div className="mb-16 px-4">
             <img 
               src={partnerLogos}
               alt="Excel Logistics partner locations"
@@ -48,7 +50,7 @@ const PublicLocations = () => {
           </div>
 
           {/* Steps */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 px-4">
             <div>
               <div className="w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
                 <img 

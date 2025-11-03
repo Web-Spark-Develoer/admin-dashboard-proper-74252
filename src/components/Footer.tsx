@@ -37,6 +37,16 @@ const Footer = () => {
                   Locations
                 </Link>
               </li>
+              <li>
+                <Link to="/about" className="text-gray-400 hover:text-[#FF6B00] transition-colors text-sm">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-gray-400 hover:text-[#FF6B00] transition-colors text-sm">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -67,13 +77,30 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Company Pages */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>📞 1-800-EXCEL-LOG</li>
-              <li>📧 support@excellogistics.com</li>
-              <li>📍 123 Logistics Way, Shipping City, SC 12345</li>
+            <h4 className="font-semibold mb-4">Company</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/corporate" className="text-gray-400 hover:text-[#FF6B00] transition-colors text-sm">
+                  Corporate Responsibility
+                </Link>
+              </li>
+              <li>
+                <Link to="/portfolio" className="text-gray-400 hover:text-[#FF6B00] transition-colors text-sm">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-400 hover:text-[#FF6B00] transition-colors text-sm">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/enroll-now" className="text-gray-400 hover:text-[#FF6B00] transition-colors text-sm">
+                  Enroll Now
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

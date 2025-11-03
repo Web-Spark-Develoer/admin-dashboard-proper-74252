@@ -17,14 +17,12 @@ serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    // Generate a unique tracking code: PLK + 10 random alphanumeric characters
+    // Generate a unique tracking code: PLK + 9 random digits
     const generateCode = () => {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      let code = 'PLK';
-      for (let i = 0; i < 10; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      return code;
+      const timestamp = Date.now();
+      const random = Math.floor(Math.random() * 1000000000);
+      const combined = (timestamp + random).toString();
+      return 'PLK' + combined.slice(-9);
     };
 
     let trackingCode = generateCode();

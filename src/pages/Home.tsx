@@ -257,48 +257,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-card border-t py-8 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
-            <div>
-              <h4 className="font-semibold mb-4 text-foreground">OUR COMPANY</h4>
-              <ul className="space-y-2 text-sm md:text-base text-muted-foreground">
-                <li><button onClick={() => navigate('/support')} className="hover:text-accent">About Excel logistics</button></li>
-                <li><button onClick={() => navigate('/support')} className="hover:text-accent">Our Portfolio</button></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-foreground">SERVICES</h4>
-              <ul className="space-y-2 text-sm md:text-base text-muted-foreground">
-                <li><button onClick={() => navigate('/shipping')} className="hover:text-accent">Shipping</button></li>
-                <li><button onClick={() => navigate('/track-parcel')} className="hover:text-accent">Tracking</button></li>
-                <li><button onClick={() => navigate('/locations')} className="hover:text-accent">Locations</button></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-foreground">SUPPORT</h4>
-              <ul className="space-y-2 text-sm md:text-base text-muted-foreground">
-                <li><button onClick={() => navigate('/support')} className="hover:text-accent">Contact Us</button></li>
-                <li><button onClick={() => navigate('/support')} className="hover:text-accent">FAQs</button></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-foreground">LANGUAGE</h4>
-              <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
-                <span className="text-blue-600">🌐</span>
-                <span>United States</span>
-              </div>
-              <select className="mt-2 border rounded px-3 py-2 text-sm md:text-base bg-card text-foreground">
-                <option>English</option>
-              </select>
-            </div>
-          </div>
-          <div className="pt-8 border-t text-center text-muted-foreground text-xs md:text-sm">
-            © 2025 Excel Secure. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
