@@ -108,6 +108,7 @@ export type Database = {
           amount: number | null
           created_at: string | null
           created_by: string | null
+          current_location: string | null
           destination: string
           id: number
           origin: string
@@ -121,6 +122,7 @@ export type Database = {
           amount?: number | null
           created_at?: string | null
           created_by?: string | null
+          current_location?: string | null
           destination: string
           id?: number
           origin: string
@@ -134,6 +136,7 @@ export type Database = {
           amount?: number | null
           created_at?: string | null
           created_by?: string | null
+          current_location?: string | null
           destination?: string
           id?: number
           origin?: string

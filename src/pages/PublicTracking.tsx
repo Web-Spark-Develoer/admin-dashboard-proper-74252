@@ -55,7 +55,7 @@ const PublicTracking = () => {
           destination: parcel.destination,
           senderName: parcel.sender_name,
           receiverName: parcel.receiver_name,
-          currentLocation: parcel.parcel_locations?.[parcel.parcel_locations.length - 1]?.location_text || 'Processing',
+          currentLocation: parcel.current_location || parcel.parcel_locations?.[parcel.parcel_locations.length - 1]?.location_text || 'Processing',
           estimatedDelivery: parcel.estimated_delivery 
             ? new Date(parcel.estimated_delivery).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
             : 'TBD',

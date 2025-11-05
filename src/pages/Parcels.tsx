@@ -26,6 +26,7 @@ const Parcels = () => {
     receiver_name: "",
     origin: "",
     destination: "",
+    current_location: "",
     amount: "",
     status: "pending"
   });
@@ -85,6 +86,7 @@ const Parcels = () => {
       receiver_name: parcel.receiver_name,
       origin: parcel.origin,
       destination: parcel.destination,
+      current_location: (parcel as any).current_location || '',
       amount: parcel.amount?.toString() || '',
       status: parcel.status,
     });
@@ -102,6 +104,7 @@ const Parcels = () => {
         receiver_name: formData.receiver_name,
         origin: formData.origin,
         destination: formData.destination,
+        current_location: formData.current_location,
         amount: parseFloat(formData.amount),
         status: formData.status,
         updated_at: new Date().toISOString(),
@@ -132,6 +135,7 @@ const Parcels = () => {
       receiver_name: formData.receiver_name,
       origin: formData.origin,
       destination: formData.destination,
+      current_location: formData.current_location,
       amount: parseFloat(formData.amount),
       status: formData.status,
       created_by: user.id,
@@ -147,6 +151,7 @@ const Parcels = () => {
         receiver_name: "",
         origin: "",
         destination: "",
+        current_location: "",
         amount: "",
         status: "pending"
       });
@@ -225,6 +230,15 @@ const Parcels = () => {
                     className="bg-[#2d3350] border-white/10 text-white"
                   />
                 </div>
+              </div>
+              <div className="space-y-2">
+                <Label className="text-gray-300">Current Location</Label>
+                <Input
+                  value={formData.current_location}
+                  onChange={(e) => setFormData({...formData, current_location: e.target.value})}
+                  placeholder="e.g., New York Sorting Facility"
+                  className="bg-[#2d3350] border-white/10 text-white"
+                />
               </div>
               <div className="space-y-2">
                 <Label className="text-gray-300">Amount ($)</Label>
@@ -353,6 +367,14 @@ const Parcels = () => {
                   <p className="text-sm lg:text-base">{selectedParcel.destination}</p>
                 </div>
               </div>
+              {(selectedParcel as any).current_location && (
+                <div>
+                  <Label className="text-muted-foreground text-xs">Current Location</Label>
+                  <p className="text-blue-400 font-semibold text-sm lg:text-base">
+                    📍 {(selectedParcel as any).current_location}
+                  </p>
+                </div>
+              )}
               <div>
                 <Label className="text-muted-foreground text-xs">Amount</Label>
                 <p className="text-lg lg:text-xl font-bold">${selectedParcel.amount?.toLocaleString()}</p>
@@ -428,6 +450,15 @@ const Parcels = () => {
                   className="bg-secondary/20 border-border"
                 />
               </div>
+            </div>
+            <div>
+              <Label className="text-xs">Current Location</Label>
+              <Input
+                value={formData.current_location}
+                onChange={(e) => setFormData({ ...formData, current_location: e.target.value })}
+                placeholder="e.g., Los Angeles Distribution Center"
+                className="bg-secondary/20 border-border"
+              />
             </div>
             <div>
               <Label className="text-xs">Amount ($)</Label>
